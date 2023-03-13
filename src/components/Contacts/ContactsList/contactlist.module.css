@@ -1,0 +1,8 @@
+.list {
+  width: 400px;
+  align-self: center;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+}
