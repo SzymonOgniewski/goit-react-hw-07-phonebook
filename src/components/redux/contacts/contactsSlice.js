@@ -36,7 +36,8 @@ const contactsSlice = createSlice({
     [deleteContactThunk.fulfilled]: (state, action) => {
       state.isPending = false;
       state.errorMessage = null;
-      const index = state.contacts.findIndex(c => c.id === action.payload);
+      const id = action.payload.id;
+      const index = state.contacts.findIndex(contact => contact.id === id);
       state.contacts.splice(index, 1);
     },
     [deleteContactThunk.rejected]: handleErrorMessage,

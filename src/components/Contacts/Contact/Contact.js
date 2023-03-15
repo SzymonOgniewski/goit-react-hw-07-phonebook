@@ -24,11 +24,9 @@ export const Contact = ({ contact }) => {
 };
 
 Contact.propTypes = {
-  contact: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-      number: PropTypes.string,
-    })
-  ),
+  contact: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    number: PropTypes.string,
+  }),
 };

@@ -11,7 +11,12 @@ export const Form = () => {
     const form = e.target;
     const name = form.elements.name.value;
     const number = form.elements.number.value;
-    dispatch(addContactThunk(name, number));
+    dispatch(
+      addContactThunk({
+        name: name,
+        number: number,
+      })
+    );
     form.reset();
   };
 
