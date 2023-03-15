@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux';
 import css from './contact.module.css';
-import { deleteContactAction } from '../redux/contactsSlice';
+import { deleteContactThunk } from 'components/redux/contacts/contacts.thunk';
 import PropTypes from 'prop-types';
 export const Contact = ({ contact }) => {
   const dispatch = useDispatch();
   const handleDeleteContact = () => {
-    dispatch(deleteContactAction(contact.id));
+    dispatch(deleteContactThunk(contact.id));
   };
   return (
     <>

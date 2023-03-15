@@ -2,16 +2,21 @@ import { Msg } from './message/Msg';
 import { Form } from './form/Form';
 import { Contacts } from './Contacts/Contacts';
 import { useSelector } from 'react-redux';
-import { getContacts } from './Contacts/redux/selectors';
+import { selectContacts, selectPendingState } from './redux/selectors';
 import { useEffect } from 'react';
+import { getAllContactsThunk } from './redux/contacts/contacts.thunk';
+import { useDispatch } from 'react-redux';
 export const App = () => {
-  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
+  const isPending = useSelector(selectPendingState);
   useEffect(() => {
-    localStorage.setItem('savedContacts', `${JSON.stringify(contacts)}`);
-  }, [contacts]);
+    dispatch(getAllContactsThunk());
+  }, [dispatch]);
   return (
     <>
       <Form />
+      {isPending && <div>Loading...</div>}
       {contacts.length === 0 ? (
         <>
           <Msg>

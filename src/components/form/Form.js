@@ -2,7 +2,7 @@ import React from 'react';
 import { Input } from './FormInput/FormInput';
 import css from './form.module.css';
 import { useDispatch } from 'react-redux';
-import { addContactAction } from 'components/Contacts/redux/contactsSlice';
+import { addContactThunk } from 'components/redux/contacts/contacts.thunk';
 export const Form = () => {
   const dispatch = useDispatch();
 
@@ -11,7 +11,7 @@ export const Form = () => {
     const form = e.target;
     const name = form.elements.name.value;
     const number = form.elements.number.value;
-    dispatch(addContactAction(name, number));
+    dispatch(addContactThunk(name, number));
     form.reset();
   };
 
