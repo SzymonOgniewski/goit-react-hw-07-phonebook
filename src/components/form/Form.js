@@ -2,15 +2,22 @@ import React from 'react';
 import { Input } from './FormInput/FormInput';
 import css from './form.module.css';
 import { useDispatch } from 'react-redux';
-import { addContactThunk } from 'components/redux/contacts/contacts.thunk';
-export const Form = () => {
-  const dispatch = useDispatch();
+import { addContactThunk } from 'components/redux/contacts/contactsThunks';
+import { useSelector } from 'react-redux';
+import { selectContacts } from 'components/redux/selectors';
 
+export const Form = () => {
+  const contacts = useSelector(selectContacts);
+  const dispatch = useDispatch();
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
     const name = form.elements.name.value;
     const number = form.elements.number.value;
+    if (contacts.some(contact => contact.name === name)) {
+      alert(`There is already contact with name of ${name} on your list`);
+      return;
+    }
     dispatch(
       addContactThunk({
         name: name,

@@ -1,5 +1,9 @@
-import styled from 'styled-components';
-export const Msg = styled.h2`
-  text-align: center;
-  padding: 20px 0 0 0;
-`;
+import css from './msg.module.css';
+
+export const Msg = () => {
+  return (
+    <div className={css.msg}>
+      <h2>There are no contacts to display. Add contacts to see the list.</h2>
+    </div>
+  );
+};

@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
 import css from './contact.module.css';
-import { deleteContactThunk } from 'components/redux/contacts/contacts.thunk';
+import { deleteContactThunk } from 'components/redux/contacts/contactsThunks';
 import PropTypes from 'prop-types';
+
 export const Contact = ({ contact }) => {
   const dispatch = useDispatch();
   const handleDeleteContact = () => {
@@ -25,6 +26,7 @@ export const Contact = ({ contact }) => {
 
 Contact.propTypes = {
   contact: PropTypes.shape({
+    createdAt: PropTypes.string,
     id: PropTypes.string,
     name: PropTypes.string,
     number: PropTypes.string,

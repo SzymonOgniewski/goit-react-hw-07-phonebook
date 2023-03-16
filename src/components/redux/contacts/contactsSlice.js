@@ -2,8 +2,9 @@ import {
   getAllContactsThunk,
   addContactThunk,
   deleteContactThunk,
-} from './contacts.thunk';
+} from './contactsThunks';
 import { createSlice } from '@reduxjs/toolkit';
+
 const handlePendingState = (state, action) => {
   state.isPending = true;
 };
